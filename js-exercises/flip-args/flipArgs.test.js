@@ -5,7 +5,7 @@ function testFlipFunc() {
   return ([...arguments]);
 }
 
-describe.only('flipArgs', () => {
+describe('flipArgs', () => {
   it('should return a function', () => {
     expect(typeof flipArgs()).toBe('function');
   });
