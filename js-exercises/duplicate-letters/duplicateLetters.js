@@ -9,13 +9,7 @@ function duplicateLetters(letters) {
     }
   });
 
-  let maxDuplicates = 0;
-  m.forEach((v) => {
-    if (maxDuplicates < v) {
-      maxDuplicates = v;
-    }
-  });
-
+  const maxDuplicates = Math.max(...m.values());
   return (maxDuplicates > 1) ? maxDuplicates : false;
 }
 
