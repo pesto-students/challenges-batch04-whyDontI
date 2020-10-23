@@ -18,14 +18,14 @@ function sumFibs(num) {
   return sumOddNumbersLessThanNum(table, num);
 }
 
-function cacheFunction(cb) {
+function cacheFunction(func) {
   const cache = new Map();
 
-  return function (args) {
-    const key = toString(args);
+  return function (...args) {
+    const key = JSON.stringify(args);
 
     if (!cache.has(key)) {
-      const result = cb(args);
+      const result = func(...args);
       cache.set(key, result);
     }
 
