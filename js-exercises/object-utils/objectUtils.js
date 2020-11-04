@@ -4,8 +4,10 @@ function map(cb) {
   const newObj = (Array.isArray(this)) ? [] : {};
   const inputObj = this;
   for (const item in inputObj) {
-    const pair = cb([item, inputObj[item]]);
-    newObj[pair[0]] = pair[1];
+    if (Object.prototype.hasOwnProperty.call(inputObj, item)) {
+      const [key, value] = cb([item, inputObj[item]]);
+      newObj[key] = value;
+    }
   }
 
   return newObj;
@@ -15,9 +17,11 @@ function filter(cb) {
   const newObj = (Array.isArray(this)) ? [] : {};
   const inputObj = this;
   for (const item in inputObj) {
-    const result = cb([item, inputObj[item]]);
-    if (result) {
-      newObj[item] = inputObj[item];
+    if (Object.prototype.hasOwnProperty.call(inputObj, item)) {
+      const result = cb([item, inputObj[item]]);
+      if (result) {
+        newObj[item] = inputObj[item];
+      }
     }
   }
 
@@ -29,7 +33,9 @@ function invert() {
   const inputObj = this;
 
   for (const i in inputObj) {
-    newObj[inputObj[i]] = i;
+    if (Object.prototype.hasOwnProperty.call(inputObj, i)) {
+      newObj[inputObj[i]] = i;
+    }
   }
 
   return newObj;
@@ -48,8 +54,10 @@ function merge(...args) {
 function all(cb) {
   const inputArray = this;
   for (const item in inputArray) {
-    if (!cb([item, inputArray[item]])) {
-      return false;
+    if (Object.prototype.hasOwnProperty.call(inputArray, item)) {
+      if (!cb([item, inputArray[item]])) {
+        return false;
+      }
     }
   }
 
@@ -59,8 +67,10 @@ function all(cb) {
 function some(cb) {
   const inputArray = this;
   for (const item in inputArray) {
-    if (cb([item, inputArray[item]])) {
-      return true;
+    if (Object.prototype.hasOwnProperty.call(inputArray, item)) {
+      if (cb([item, inputArray[item]])) {
+        return true;
+      }
     }
   }
 

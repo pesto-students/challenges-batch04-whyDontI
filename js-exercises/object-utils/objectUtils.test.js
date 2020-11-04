@@ -12,7 +12,7 @@ describe('Object Utils', () => {
     const callbackFN = ([key, value]) => [key.toUpperCase(), value * 2];
     let modifiedObj = map.call(obj, callbackFN);
     expect(modifiedObj).toEqual({ CHOCOLATES: 10, DRINKS: 20, BEER: 10 });
-    const filterCBFunc = ([key, value]) => key === 'chocolates';
+    const filterCBFunc = ([key]) => key === 'chocolates';
     modifiedObj = filter.call(obj, filterCBFunc);
     expect(modifiedObj).toEqual({ chocolates: 5 });
   });
