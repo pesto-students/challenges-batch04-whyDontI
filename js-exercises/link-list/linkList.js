@@ -1,26 +1,25 @@
 import LinkListNode from './linkListNode';
 
 export default class LinkList {
-  constructor(value) {
-    this.head = new LinkListNode(value);
+  constructor() {
+    this.head = null;
   }
 
   prepend(value) {
     if (this.head === null) {
       this.head = new LinkListNode(value);
-      return this.head;
+      return;
     }
+
     const node = new LinkListNode(value);
     node.next = this.head;
     this.head = node;
-
-    return this.head;
   }
 
   append(value) {
     if (this.head === null) {
       this.head = new LinkListNode(value);
-      return this.head;
+      return;
     }
     let curr = this.head;
 
@@ -29,8 +28,6 @@ export default class LinkList {
     }
 
     curr.next = new LinkListNode(value);
-
-    return this.head;
   }
 
   delete(value) {

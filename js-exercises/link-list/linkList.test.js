@@ -1,7 +1,7 @@
 import LinkListNode from './linkListNode';
 import LinkList from './linkList';
 
-describe.only('LinkListNode', () => {
+describe('LinkListNode', () => {
   test('should create list node with value', () => {
     const node = new LinkListNode('satyam');
     expect(node.value).toBe('satyam');
@@ -32,7 +32,7 @@ describe.only('LinkListNode', () => {
   });
 });
 
-describe.only('LinkList', () => {
+describe('LinkList', () => {
   let list = null;
   beforeEach(() => {
     list = new LinkList();
